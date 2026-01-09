@@ -27,13 +27,14 @@ public class Main {
     * numbers [2, 4]. Note that a single number in an array and the array itself are
     * both valid subsequences of the array.*/
 
+    // O(m*n) time,
     public static boolean isValidSubsequence(List<Integer> array, List<Integer> sequence){
-        if(!array.contains(sequence.get(0))) return false;
-        if(array.contains(sequence.get(0)) && sequence.size() == 1) return true;
+        if(!array.contains(sequence.getFirst())) return false;
+        if(array.contains(sequence.getFirst()) && sequence.size() == 1) return true;
         int s = 0;
         // Tìm ra index của phần tử array = sequence[0]
         for(int i = 0; i < array.size(); i++){
-            if(array.get(i).equals(sequence.get(0))){
+            if(array.get(i).equals(sequence.getFirst())){
                 s = i;
                 break;
             }
