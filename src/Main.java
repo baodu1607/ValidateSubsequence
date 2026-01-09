@@ -58,15 +58,29 @@ public class Main {
         return true;
     }
 
-    //remember: order matter
+    //remember: order matter - O(n) time, O(1) space
     public static boolean isValidSubsequence2(List<Integer> array, List<Integer> sequence){
         int arrIndex = 0;
         int seqIndex = 0;
         while (arrIndex < array.size() && seqIndex < sequence.size()){
             if(array.get(arrIndex).equals(sequence.get(seqIndex))){
+                seqIndex++; //move on if only found a match
+            }
+            arrIndex++; //regardless of match or not keep moving forward in the main array
+        }
+
+        //if traversed entire sequence by the end of the while loop --> found a subsequence
+        return seqIndex == sequence.size();
+    }
+
+    //using for loop
+    public static boolean isValidSubsequence3(List<Integer> array, List<Integer> sequence){
+        int seqIndex = 0;
+        for(int elem : array){
+            if(seqIndex == sequence.size()) break; //without it --> index out of bound
+            if(elem == sequence.get(seqIndex)){
                 seqIndex++;
             }
-            arrIndex++;
         }
         return seqIndex == sequence.size();
     }
